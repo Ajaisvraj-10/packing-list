@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Invoice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <style type="text/css">
+          
+
+      * {
+        border: 0;
+        box-sizing: content-box;
+        color: inherit;
+      
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        vertical-align: top;
+      }
+
+      /* content editable */
+
+      *[contenteditable] {
+        border-radius: 0.25em;
+        min-width: 1em;
+        outline: 0;
+      }
+
+      *[contenteditable] {
+        cursor: pointer;
+      }
+
+      *[contenteditable]:hover,
+      *[contenteditable]:focus,
+      td:hover *[contenteditable],
+      td:focus *[contenteditable],
+      img.hover {
+        background: #def;
+        box-shadow: 0 0 1em 0.5em #def;
+      }
+
+      span{
+        display: inline-block;
+        line-height: 24px;
+        font-size: 16px;
+
+      }
+      td{
+      
+        line-height: 24px;
+        font-size: 16px;
+
+      }
+
+      /* heading */
+
+
+
+      /* table */
+
+      table {
+        font-size: 75%;
+        table-layout: fixed;
+        width: 100%;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0px;
+      }
+      th,
+      td {
+      
+        position: relative;
+        text-align: left;
+      }
+      th,
+      td {
+        border-radius: 0em;
+        border-style: solid;
+        border: .5px solid black;
+        padding: 10px;
+      }
+
+      th {
+      
+        text-align: left;
+        border-bottom: none;
+      }
+      /* td {
+        
+      } */
+
+      /* page */
+
+      html {
+        font: 16px/1 "Open Sans", sans-serif;
+        overflow: auto;
+        padding: 0.5in;
+      }
+      html {
+        background: #999;
+        cursor: default;
+      }
+
+      body {
+        box-sizing: border-box;
+      aspect-ratio: 1.4/2;
+        margin: 0 auto;
+        overflow: hidden;
+        padding: 0;
+        width:100%;
+        font-family: 'Montserrat', sans-serif;
+        overflow: auto;
+        background: #fff;
+
+        box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
+        position: relative;
+      }
+
+
+      /* header */
+
+
+
+      header{
+          position: relative;
+          padding-bottom: 20px;
+      }
+
+
+
+      header td{
+        text-align: center;
+      }
+
+
+      /* article */
+
+      article{
+        padding: 20px;
+
+      }
+
+
+      @media print {
+        * {
+          -webkit-print-color-adjust: exact;
+        }
+        html {
+          background: none;
+          padding: 0;
+        }
+        body {
+          box-shadow: none;
+          margin: 0;
+        }
+        span:empty {
+          display: none;
+        }
+
+      }
+
+      @page {
+        margin: 0;
+      }
+
+    </style>
+  </head>
+  <body>
+    
+    <article id="app">
+      <header >
+        <table>
+          <tr>
+            <td colspan="2" style="border:none;"><span style="font-weight: 700;font-size: 24px;">PACKING LIST </span></td>
+          </tr>
+        </table>
+      </header>
+      <table class="">
+        <thead>
+          <tr>
+            <th colspan="4" style="text-align: center;">SUPPLY MEANT FOR EXPORT UNDER BOND/LETTER OF UNDERTAKING WITHOUT PAYMENT OF INTEGRATED TAX (IGST)</th>
+          </tr>
+          <tr >
+            <th colspan="2">
+              <span  style="font-weight: 600;">GSTIN : 32AAFC8616981Z1 ,IEC NO : 1015904351; <br>FDA Facility Reg# 15040562300,FSSAI :  10015041000775</span> 
+            </th>
+            <th>
+              <span  style="font-weight: 600;">INVOICE NO : B/2022-23</span> 
+            </th> 
+            <th>
+              <span  style="font-weight: 600;">Date :</span> 
+            </th>                                   
+          </tr>
+        </thead>
+        <tbody >
+          <!-- <tr>
+            <td>
+              {{form_data.ics_name}}
+            </td>
+            <td>
+              {{form_data.buyer_name}}
+            </td>
+          </tr> -->
+        </tbody>
+      </table>
+      <!-- <table class="" >
+        <thead>
+          <tr >
+            <th style="border-top:none;">
+              <span  style="font-weight: 700;">Dispacth From</span> 
+            </th>
+            <th style="border-top:none;">
+              <span  style="font-weight: 700;">Dispatch To (Place and Address)</span> 
+            </th>                                   
+          </tr>
+        </thead>
+        <tbody >
+          <tr>
+            <td>
+              <span>{{form_data.dispatch_from}}</span> 
+            </td>
+            <td>
+              <span>{{form_data.dispatch_to}}</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="border-bottom:none;">
+              <span>Lot No : {{form_data.tc_number}}</span> 
+            </td>
+            <td style="border-bottom:none;">
+              <span>Transport Date :09-02-2023    </span>
+              <span>Vehicle No :    KL 57 3196</span>
+            </td>
+          </tr>
+        </tbody>
+      </table> -->
+      <table class="" >
+        <thead>
+          <tr >
+            <th colspan="6" style="min-width: 50px;">
+              <span>Exporter : <br>BIOWIN AGRO RESEARCH <br> 5870,MP5,VEMOM P O ,MANANTHAVADY, <br> Wayanad ,Kerala ,INDIA , 670 645. <br> STATE : KERALA ,STATE CODE :KL 32</span> 
+            </th>
+            <th colspan="3">
+              <span>Buyers order no & Date</span>
+            </th>  
+            
+            
+            <th colspan="3" style="min-width: 150px;">
+              <span>15190  14.12.2022</span> 
+            </th>
+            
+          </tr>
+         
+        </thead>
+        <tbody>
+          <tr v-for="farmer in form_data.farmers">
+            <td>{{farmer.id}}</td>
+            <td>{{farmer.farmer_code}}</td>
+            <td>{{farmer.name}}</td>
+            <td>{{farmer.status}}. {{farmer.category}} <br>{{farmer.product}}</td>
+            <td>{{farmer.procure_qty}}</td>
+            <td>{{form_data.bag_weight}} Kg* {{form_data.number_bags}} No </td>
+            <td>{{farmer.price}}</td>
+            <td>{{farmer.total}}</td>
+            <td>C1073 to C1120 </td>
+          </tr>
+          
+          <tr>
+            <th colspan="6">
+              <span>Consignee : <br>Attn Purchase &  Logistics Department <br>IL POLO DEL CAFFE `SPA <br> Via Boscofangone Lotto D 201/204 <br>Interporto Campano <br>80035 Nola <br>
+              Italy(IT)
+              </span>
+            </th>
+            <th colspan="6">
+              <span>Other References :</span>
+            </th>
+          </tr>
+
+          <tr>
+            <td colspan="2">Pre-Carriage by</td>
+            <td colspan="4">Place of Receipt by pre-carrier</td>
+            <td colspan="6">Buyer : <br>Attn Purchase &  Logistics Department <br>Greencof B.V.,<br>Grote Dost 53-1, 1621 BS Hoorn ,The Netherlands <br>e-mail : support@greencof.com</td>
+          </tr>
+          <tr><td colspan="2" style="border-bottom:none;"><span></span></td>
+          <td colspan="4">Port of Loading Manglore</td>
+          <td colspan="6">Importer: <br> Best Coffee S R L -PT1470 <br> Via Michele Spadaro 19 <br>74121 Taranto,Italy(IT) <br>EDRI:IT027444700739,info@bestcoffee.it </td>
+          </tr>
+          <tr>
+            <td colspan="2"><span>Port of Discharge :</span></td>
+            <td colspan="4"><span>Final Destination :</span></td>
+            <td colspan="3"><span>Country of Final Destination :</span></td>
+            <td colspan="3"><span>ITALY</span></td>
+          </tr>
+          <tr>
+            <td colspan="2">NAPLES</td>
+            <td style="text-align: center;" colspan="4"><span>ITALY</span></td>
+            <td colspan="6">TERMS OF DELIVERY AND PAYMENT : <br><br>FOB MANGLORE-100% Payment Cash Against Documents</td>
+          </tr>
+          <tr>
+            <td colspan="1">SI No</td>
+            <td colspan="1">Marks & Nos/ <br>Container No.</td>
+            <td style="text-align: center;" colspan="4">Description of Goods</td>
+            <td>No & Kind of Package</td>
+            <td style="text-align: center;" colspan="2">Unit Quantity <br><br>In Kg Net Wt </td>
+            <td style="text-align: center;">Pieces</td>
+            <td style="text-align: center;">Total Quantity <br><br>In Gross Wt.</td>
+            <td style="text-align: center;">Total Quantity <br><br>In Kg Net Wt</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td style="text-align: center;" colspan="1"><span style="font-size: 12px;">014/1554/2023/40 <br><br><br><br>CONTRACT NO 15190</span></td>
+            <td colspan="4">FAIRTRADE & ORGANIC COFFEE ROBUSTA <br>CHERRY AB <br><br><br><br>SELLER BIOWIN FLO ID : 33431 <br>PRDUCER WOFFA FLO ID:20255 <br>
+            BUYER GREENCOF B V FLO ID :6524 <br>IMPORTER BEST COFFEE SRL FLO ID : 23534 <br> CROP 2022-23. IN-BIO-132
+            </td>
+            <td>20 BAG</td>
+            <td colspan="2">1000.000</td>
+            <td>20</td>
+            <td>20230.000</td>
+            <td>20000.000</td>
+          </tr>
+          <tr>
+            <td colspan="6">Total</td>
+            <td>20 BAG</td>
+            <td colspan="2"></td>
+            <td>20</td>
+            <td>20230.000</td>
+            <td>20000.000</td>
+          </tr>
+          <tr>
+            <td colspan="6">Declaration : <br><br>We Declare that this invoice shows  the actual price of the goods <br>described and that all particulars  are true and correct</td>
+            <td colspan="6">For Biowin Agro Research</td>
+          </tr>
+        </tbody>
+      </table>
+      <table>
+        <tbody>
+          <!-- <tr>
+            <td colspan="">NAPLES</td>
+            <td colspan="2">NAPLES</td>
+          </tr> -->
+              <table>
+              <tbody>
+                <!-- <tr>
+                  <td colspan="2">
+                    <span></span>
+                  </td>
+                </tr> -->
+                
+        </tbody>
+      </table>
+    </article>
+    
+    <script>
+      var myObject = new Vue({
+        el: '#app',
+        data() {
+          return {
+            // api_url:'https://api.biowinnew.capcee.com',
+            // api_url:'https://api.biowinerp.com',
+            api_url:'http://127.0.0.1:8000',
+            is_print_btn:true,
+            total_pages:0,
+            form_data:{
+              id : null,
+              tc: null,
+              farmers:[],
+            },
+          };
+        },
+        mounted(){
+          var url_string = window.location.href
+          var url = new URL(url_string);
+          var tc_id = url.searchParams.get("tc")
+          var form_id = url.searchParams.get("form")
+          
+          var is_loggin = false
+          if(localStorage.getItem("userInfo"))
+          {
+            if(localStorage.getItem("userInfo").length>0){
+              is_loggin = true
+              this.form_data.id = form_id
+              this.form_data.tc = tc_id
+              this.getForm()
+            }
+          }
+          if(!is_loggin){
+              this.$router.push('/login')
+          }
+        },
+        methods: {
+          printNow() {
+            this.is_print_btn = false
+            setTimeout(function() {
+              window.print()
+            }, 100)
+            window.onafterprint = back;
+            var self = this
+            function back() {
+              self.is_print_btn = true
+            }
+          },
+          getForm() {
+            var headers = new Headers();
+            fetch(this.api_url+'/purchase/documentation_tc_value/'+this.form_data.tc+'/'+this.form_data.id+'/', {
+                method : 'get',
+                headers: headers,
+            })
+            .then((response) => {
+                return response.json()
+            })
+            .then((jsonData) => {
+              this.form_data = jsonData
+              var self = this
+              setTimeout(function(){
+                self.printNow()
+              },500)
+            })
+          },
+          totalFarm(field){
+            var total = 0
+            this.form_data.farmers.forEach(farmer => {
+              total += parseFloat(farmer[field])
+            });
+            return total
+          },
+          romanize(num) {
+            var lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1},roman = '',i;
+            for ( i in lookup ) {
+              while ( num >= lookup[i] ) {
+                roman += i;
+                num -= lookup[i];
+              }
+            }
+            return roman;
+          },
+          numberToWords(number) {
+            // Define arrays for words
+            const units = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+            const teens = ['', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+            const tens = ['', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+            const thousands = ['', 'thousand', 'million', 'billion', 'trillion'];
+
+            // Function to convert a chunk of three digits into words
+            function convertChunk(num) {
+                if (num === 0) return '';
+                if (num < 10) return units[num];
+                if (num < 20) return teens[num - 10];
+                const ten = Math.floor(num / 10);
+                const one = num % 10;
+                return tens[ten] + (one !== 0 ? ' ' + units[one] : '');
+            }
+
+            // Function to convert the main number into words
+            function convertNumber(num) {
+                if (num === 0) return 'zero';
+                const chunks = [];
+                let chunkIndex = 0;
+                while (num > 0) {
+                    const chunk = num % 1000;
+                    if (chunk !== 0) {
+                        chunks.push(convertChunk(chunk) + ' ' + thousands[chunkIndex]);
+                    }
+                    num = Math.floor(num / 1000);
+                    chunkIndex++;
+                }
+                return chunks.reverse().join(' ').trim();
+            }
+
+            // Main function call
+            return convertNumber(number);
+          },
+          dateFormate(date,is_time=false){
+            if(!date){
+              return ''
+            }
+            var mydate = new Date(date);
+            var month = ["Jan", "Feb", "Mar", "Apr", "May", "June",
+            "July", "Aug", "Sept", "Oct", "Nov", "Dec"][mydate.getMonth()];
+            var time = '';
+            if(is_time){
+              var hour = mydate.getHours();
+              var min = mydate.getMinutes();
+              var sec = mydate.getSeconds();
+              time = mydate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+              if(hour==0&&min==0&&sec==0){
+                time='';
+              }
+            }
+            var str = mydate.getDate()+' '+month + ' ' +mydate.getFullYear()+' '+time;
+      
+            return str
+          },
+        },
+      })
+    </script>
+  </body>
+</html>
